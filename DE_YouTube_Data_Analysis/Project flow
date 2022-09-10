@@ -1,0 +1,22 @@
+Create Pipeline to analyse YouTube Trending Dataset from kaggle to Azure sysnapse Analytics and some BI tool
+
+Project Description:
+The motive of this project is to mimic the scenario as you are a marketing lead in an E-com company and want to run your advertising campaign and analyse how these campaigns are performing. 
+Here we have YouTube Trending Dataset which contains metadata and statistics data about the videos and helps us to perform the analysis on it and identify the trending videos on youtube. we can also analyse the specific video's data ie. views,likes,dislikes and comment counts and build a dashboard using a BI tool like Qlik,Power BI etc and perform some analytics on top of it. we have created a pipeline using Azure Databricks to read the data from Azure ADLS Gen2 account and pre-prorocess it using pyspark and stored the cleaned data back into storage account. We used the cleaned data and created tables and final view using Azure Synapse Serverless sql pool and used the view in BI tool and created dashboard on top of it. 
+
+
+Part 1:
+1. Download the data from kaggle: https://www.kaggle.com/datasets/datasnaek/youtube-new
+2. Hare we have Metadata in json and stats data in csv format
+3. Since json data contains nested structure we need to preprocess it before using and and we have creeated the python notebook to preprocess it using pyspark
+4. Similarly  we have read the Csv data and preprocessed it na dstored in parquet format by partitioning it on "region"
+5. Now we have cleaned the data and stored in storage account in parquet format.
+
+Part 2:
+1. Our end goal is to analyse the data and create some reports on top of it.
+2. Since Azure sysnapse anaytics provide us modern data warehouse solution we created external tables on top of the data stored on storage account.
+3. Since we need a combined table to perform analytics we need to combine metadata nad stats data into one table, we created a final view by using tables.
+4. we used this final view as source in our BI tool and created dashboard on top of it.
+
+
+
